@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { RegisterUser } from './Register';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:3000/',
@@ -19,4 +20,8 @@ export async function login(username: string, password: string) {
     username,
     password,
   });
+}
+
+export async function register(registerUser: RegisterUser) {
+  return await axiosInstance.post('/user/register', registerUser);
 }

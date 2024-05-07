@@ -1,26 +1,13 @@
 import { Button, Checkbox, message, Form, Input } from 'antd';
 import './login.css';
 import { login } from './interface';
+import { useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
 
 interface LoginUser {
   username: string;
   password: string;
 }
-
-const onFinish = async (values: LoginUser) => {
-  const res = await login(values.username, values.password);
-
-  const { code, message: msg, data } = res.data;
-  if (res.status === 201 || res.status === 200) {
-    message.success('登录成功');
-
-    localStorage.setItem('access_token', data.accessToken);
-    localStorage.setItem('refresh_token', data.refreshToken);
-    localStorage.setItem('user_info', JSON.stringify(data.userInfo));
-  } else {
-    message.error(data || '系统繁忙，请稍后再试');
-  }
-};
 
 const layout1 = {
   labelCol: { span: 4 },
@@ -33,6 +20,27 @@ const layout2 = {
 };
 
 export function Login() {
+  const navigate = useNavigate();
+
+  const onFinish = useCallback(async (values: LoginUser) => {
+    const res = await login(values.username, values.password);
+
+    const { code, message: msg, data } = res.data;
+    if (res.status === 201 || res.status === 200) {
+      message.success('登录成功');
+
+      localStorage.setItem('access_token', data.accessToken);
+      localStorage.setItem('refresh_token', data.refreshToken);
+      localStorage.setItem('user_info', JSON.stringify(data.userInfo));
+
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
+    } else {
+      message.error(data || '系统繁忙，请稍后再试');
+    }
+  }, []);
+  
   return (
     <div id='login-container'>
       <h1>会议室预订系统</h1>
