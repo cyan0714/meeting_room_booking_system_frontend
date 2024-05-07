@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { RouterProvider, createBrowserRouter, Link, Outlet } from 'react-router-dom';
-import { Register } from './Register';
-import { Login } from './Login';
-import { UpdatePassword } from './UpdatePassword';
-import { ErrorPage } from './ErrorPage';
+import { Register } from './page/register/Register';
+import { Login } from './page/login/Login';
+import { UpdatePassword } from './page/update_password/UpdatePassword';
+import { ErrorPage } from './page/error_page/ErrorPage';
 
 const routes = [
   {

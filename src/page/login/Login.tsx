@@ -1,7 +1,7 @@
 import { Button, Checkbox, message, Form, Input } from 'antd';
 import './login.css';
-import { login } from './interface';
-import { useNavigate } from 'react-router-dom';
+import { login } from '../../interface/interfaces';
+import { useNavigate, Link } from 'react-router-dom';
 import { useCallback } from 'react';
 
 interface LoginUser {
@@ -40,7 +40,7 @@ export function Login() {
       message.error(data || '系统繁忙，请稍后再试');
     }
   }, []);
-  
+
   return (
     <div id='login-container'>
       <h1>会议室预订系统</h1>
@@ -61,8 +61,7 @@ export function Login() {
 
         <Form.Item {...layout2}>
           <div className='links'>
-            <a href=''>创建账号</a>
-            <a href=''>忘记密码</a>
+            <Link to='/register'>创建账号</Link>
           </div>
         </Form.Item>
 
