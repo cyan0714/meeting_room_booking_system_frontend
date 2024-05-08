@@ -62,6 +62,7 @@ export function Login() {
         <Form.Item {...layout2}>
           <div className='links'>
             <Link to='/register'>创建账号</Link>
+            <Link to='/update_password'>忘记密码?</Link>
           </div>
         </Form.Item>
 
