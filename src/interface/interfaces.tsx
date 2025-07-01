@@ -3,7 +3,7 @@ import { RegisterUser } from '../page/register/Register'
 import { UpdatePassword } from '../page/update_password/UpdatePassword'
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3000/',
+  baseURL: 'http://localhost:3005/',
   timeout: 3000,
 })
 
