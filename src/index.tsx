@@ -1,16 +1,28 @@
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import { RouterProvider, createBrowserRouter, Link, Outlet } from 'react-router-dom';
-import { Register } from './page/register/Register';
-import { Login } from './page/login/Login';
-import { UpdatePassword } from './page/update_password/UpdatePassword';
-import { ErrorPage } from './page/error_page/ErrorPage';
+import ReactDOM from 'react-dom/client'
+import './index.css'
+import { RouterProvider, createBrowserRouter, Link, Outlet } from 'react-router-dom'
+import { Register } from './page/register/Register'
+import { Login } from './page/login/Login'
+import { UpdatePassword } from './page/update_password/UpdatePassword'
+import { ErrorPage } from './page/error_page/ErrorPage'
+import { Index } from './page/index'
+import { UpdateInfo } from './page/update_info/UpdateInfo'
 
 const routes = [
   {
     path: '/',
-    element: <div>index</div>,
+    element: <Index></Index>,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: 'update_info',
+        element: <UpdateInfo></UpdateInfo>,
+      },
+      {
+        path: 'bbb',
+        element: <div>bbb</div>,
+      },
+    ],
   },
   {
     path: 'login',
@@ -24,9 +36,9 @@ const routes = [
     path: 'update_password',
     element: <UpdatePassword />,
   },
-];
-const router = createBrowserRouter(routes);
+]
+const router = createBrowserRouter(routes)
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
-root.render(<RouterProvider router={router} />);
+root.render(<RouterProvider router={router} />)
